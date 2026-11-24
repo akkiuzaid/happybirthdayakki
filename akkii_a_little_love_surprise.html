@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akkii – A Little Love Surprise ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Quicksand & Great Vibes for romantic & cute typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    },
+                    colors: {
+                        pastelPink: '#ffd1dc',
+                        hotPink: '#ff4d8d',
+                        softLavender: '#e6d7ff',
+                        deepRose: '#4a152b',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2.5s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        heartbeat: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.15)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.15)' },
+                            '70%': { transform: 'scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Romantic Aesthetics & Animations */
+        body {
+            background: linear-gradient(135deg, #ffe4ec 0%, #f3e5f5 45%, #ffd1dc 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+            color: #4a152b;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 20px 50px rgba(255, 77, 141, 0.18), inset 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        /* Glowing Romantic Button */
+        .btn-glow {
+            background: linear-gradient(45deg, #ff4d8d, #ff7eb3);
+            box-shadow: 0 8px 25px rgba(255, 77, 141, 0.45);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(255, 77, 141, 0.65);
+        }
+
+        .btn-glow:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* Secondary Cute Button */
+        .btn-soft {
+            background: rgba(255, 255, 255, 0.85);
+            border: 2px solid #ffb3c6;
+            color: #d62865;
+            box-shadow: 0 6px 18px rgba(214, 40, 101, 0.12);
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-soft:hover {
+            background: #fff0f5;
+            transform: translateY(-2px);
+        }
+
+        /* Page Transition States */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(25px) scale(0.97);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .page-section.active {
+            display: flex;
+        }
+
+        .page-section.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Floating Background Hearts */
+        .floating-heart {
+            position: fixed;
+            bottom: -10vh;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear forwards;
+            opacity: 0.7;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.75;
+            }
+            85% {
+                opacity: 0.75;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Particles */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 50;
+            animation: sparkleFade 1s ease-out forwards;
+        }
+
+        @keyframes sparkleFade {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.9; }
+            100% { transform: scale(0) rotate(360deg); opacity: 0; }
+        }
+
+        /* Compliment Card Staggered Entrance */
+        .compliment-item {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .compliment-item.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Certificate Gold & Rose Border */
+        .certificate-border {
+            background: linear-gradient(180deg, #fff9fb 0%, #fff0f6 100%);
+            border: 4px double #ff4d8d;
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.8), 0 15px 35px rgba(255, 77, 141, 0.25);
+        }
+
+        /* Custom Scrollbar for Letter on small screens */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(255, 209, 220, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(255, 77, 141, 0.5);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between relative selection:bg-pink-200 selection:text-pink-900">
+
+    <!-- Canvas for Heart Confetti & Explosions -->
+    <canvas id="confetti-canvas" class="fixed inset-0 pointer-events-none z-40 w-full h-full"></canvas>
+
+    <!-- Floating Hearts Container -->
+    <div id="floating-hearts-bg" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <!-- Top Navigation Bar: Progress Indicator & Music Control -->
+    <header class="relative z-30 w-full max-w-4xl mx-auto px-4 pt-4 pb-2 flex items-center justify-between gap-3">
+        <!-- Progress Pill -->
+        <div class="glass-card px-4 py-2 rounded-full flex items-center gap-3 flex-1 max-w-xs sm:max-w-sm">
+            <span id="page-indicator-text" class="text-xs sm:text-sm font-bold text-pink-700 whitespace-nowrap">Page 1 of 10</span>
+            <div class="w-full bg-pink-100 h-2.5 rounded-full overflow-hidden p-0.5">
+                <div id="progress-bar" class="bg-gradient-to-r from-pink-400 to-rose-500 h-full rounded-full transition-all duration-500 ease-out" style="width: 10%;"></div>
+        <!-- Music Toggle Button (Plays your custom birthday.mp3 audio) -->
+        <button id="music-toggle" onclick="toggleMusic()" aria-label="Toggle Background Music" class="glass-card px-4 py-2 rounded-full flex items-center gap-2 text-xs sm:text-sm font-bold text-pink-700 hover:bg-white/90 active:scale-95 transition-all cursor-pointer shadow-sm">
+            <span id="music-icon" class="text-base">🔇</span>
+            <span id="music-label">Music: OFF</span>
+        </button>
+    </header>
+
+    <!-- Custom ElevenLabs Audio File: Place 'birthday.mp3' in the same GitHub folder -->
+    <audio id="bg-music" src="birthday.mp3" loop preload="auto"></audio>
+
+    <!-- Main Content Area -->
+    <main class="relative z-20 flex-1 flex items-center justify-center w-full max-w-2xl mx-auto px-4 py-4 sm:py-6">
+
+        <!-- ========================================================= -->
+        <!-- PAGE 1: WELCOME                                           -->
+        <!-- ========================================================= -->
+        <section id="page-1" class="page-section active visible w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-7 sm:p-12 w-full relative overflow-hidden">
+                <!-- Decorative Corner Sparkles -->
+                <div class="inline-block px-4 py-1 rounded-full bg-pink-100/90 border border-pink-300 text-pink-700 text-xs sm:text-sm font-bold tracking-wide mb-3 animate-pulse">
+                    🎂 IT'S YOUR SPECIAL DAY! 🥳
+                </div>
+                <div class="text-4xl sm:text-5xl mb-3 animate-float block">🎂💝</div>
+                
+                <h1 class="text-4xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-500 to-purple-600 mb-4 tracking-tight leading-tight">
+                    Happy Birthday Akkii! 💗
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-rose-900/85 font-medium mb-8 max-w-md mx-auto leading-relaxed">
+                    Aaj tumhara birthday hai, aur tumhare Cutu ne ek chhota sa pyaara surprise banaya hai!
+                </p>
+
+                <button onclick="startSurprise()" class="btn-glow text-white font-bold text-lg sm:text-xl px-8 py-4 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                    <span>Open Your Birthday Surprise</span>
+                    <span class="text-xl animate-pulse">🎁✨</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 2: ARE YOU READY?                                    -->
+        <!-- ========================================================= -->
+        <section id="page-2" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-7 sm:p-10 w-full">
+                <div class="text-5xl mb-4 animate-bounce-slow">🫣💖</div>
+                
+                <h2 class="text-3xl sm:text-4xl font-bold text-rose-800 mb-3 leading-snug">
+                    Ready ho apne birthday surprise ke liye?
+                </h2>
+                <p class="text-sm sm:text-base text-pink-700/80 font-medium mb-7">
+                    Cutu ne birthday girl ke liye bahut pyaar se banaya hai yeh! 🎂
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                    <button onclick="handleReadyChoice('yes')" class="btn-glow text-white font-bold text-base sm:text-lg px-7 py-3.5 rounded-full w-full sm:w-auto cursor-pointer">
+                        YESSS! 😍
+                    </button>
+                    <button onclick="handleReadyChoice('curious')" class="btn-soft font-bold text-base sm:text-lg px-7 py-3.5 rounded-full w-full sm:w-auto cursor-pointer">
+                        Pehle batao kya hai 🤨
+                    </button>
+                </div>
+
+                <!-- Dynamic Funny Response Box -->
+                <div id="page2-response" class="hidden mb-6 p-4 rounded-2xl bg-pink-100/80 border border-pink-300 text-rose-900 font-semibold text-base sm:text-lg animate-fade-in">
+                </div>
+
+                <div id="page2-next-wrap" class="hidden">
+                    <button onclick="goToPage(3)" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                        <span>Chalo Aage Chalte Hain</span>
+                        <span>➡️💕</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 3: THE LOVE QUESTION (PLAYFUL DODGING NO BUTTON)     -->
+        <!-- ========================================================= -->
+        <section id="page-3" class="page-section w-full flex-col items-center text-center">
+            <div id="playful-arena" class="glass-card rounded-3xl p-7 sm:p-11 w-full min-h-[380px] sm:min-h-[420px] flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="text-5xl mb-3 animate-heartbeat">🥺👉👈</div>
+                
+                <h2 class="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-600 mb-3 leading-tight">
+                    Akkii, Do You Love Your Cutu? 🥺
+                </h2>
+
+                <!-- Funny Message Display on NO Clicks -->
+                <p id="no-attempt-msg" class="text-sm sm:text-base font-bold text-pink-600 min-h-[28px] mb-8 transition-all duration-300">
+                    Sach sach batana, Cutu dekh raha hai! 👀
+                </p>
+
+                <!-- Buttons Container -->
+                <div class="flex flex-wrap items-center justify-center gap-5 w-full relative z-10">
+                    <button id="yes-love-btn" onclick="handleYesLove()" class="btn-glow text-white font-bold text-lg sm:text-xl px-8 py-4 rounded-full cursor-pointer transition-transform duration-300">
+                        YES, BOHOT SAARA! ❤️
+                    </button>
+
+                    <button id="no-love-btn" onclick="dodgeNoButton()" class="btn-soft font-bold text-base sm:text-lg px-7 py-3.5 rounded-full cursor-pointer transition-all duration-200">
+                        NO 😏
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 4: CELEBRATION & INTERACTIVE BIRTHDAY CAKE           -->
+        <!-- ========================================================= -->
+        <section id="page-4" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 w-full relative overflow-hidden">
+                <div class="flex justify-center gap-3 text-3xl sm:text-4xl mb-2">
+                    <span class="animate-bounce">🥳</span>
+                    <span class="animate-heartbeat">🎂</span>
+                    <span class="animate-bounce" style="animation-delay: 0.2s;">🥹</span>
+                </div>
+
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 mb-2 leading-tight">
+                    YAYYYYY! HAPPY BIRTHDAY CUTIE! 🥹❤️
+                </h2>
+
+                <p id="cake-instruction" class="text-sm sm:text-base text-rose-800 font-semibold mb-4">
+                    Pehle wish maango aur cake pe tap karke candles blow karo! 🕯️✨
+                </p>
+
+                <!-- Interactive Birthday Cake -->
+                <div onclick="blowCandles()" id="birthday-cake-box" class="relative w-56 sm:w-64 mx-auto my-2 cursor-pointer group select-none transition-transform hover:scale-105 active:scale-95">
+                    <svg viewBox="0 0 240 200" class="w-full h-auto drop-shadow-lg">
+                        <!-- Plate -->
+                        <ellipse cx="120" cy="182" rx="105" ry="14" fill="#ffffff" stroke="#ffb3c6" stroke-width="3" />
+                        <!-- Bottom Cake Layer -->
+                        <rect x="35" y="125" width="170" height="52" rx="14" fill="#ff7eb3" />
+                        <path d="M 35 138 Q 55 152 75 138 T 115 138 T 155 138 T 195 138 L 205 138 L 205 125 L 35 125 Z" fill="#fff0f5" />
+                        <!-- Top Cake Layer -->
+                        <rect x="58" y="82" width="124" height="45" rx="12" fill="#ff4d8d" />
+                        <path d="M 58 94 Q 74 106 90 94 T 122 94 T 154 94 T 182 94 L 182 82 L 58 82 Z" fill="#ffffff" />
+                        <!-- Decorative Sprinkles -->
+                        <circle cx="80" cy="158" r="4" fill="#ffd166" />
+                        <circle cx="120" cy="162" r="4" fill="#ffffff" />
+                        <circle cx="160" cy="156" r="4" fill="#c77dff" />
+                        <circle cx="95" cy="112" r="3.5" fill="#ffd166" />
+                        <circle cx="145" cy="112" r="3.5" fill="#fff0f5" />
+
+                        <!-- Candles -->
+                        <rect x="85" y="48" width="10" height="34" rx="4" fill="#ffd166" />
+                        <rect x="115" y="44" width="10" height="38" rx="4" fill="#c77dff" />
+                        <rect x="145" y="48" width="10" height="34" rx="4" fill="#72efdd" />
+
+                        <!-- Flames Group (Hidden when blown out) -->
+                        <g id="candle-flames" class="transition-opacity duration-500">
+                            <path d="M90 26 C95 34 95 43 90 46 C85 43 85 34 90 26 Z" fill="#ff9f1c" class="animate-pulse" />
+                            <circle cx="90" cy="39" r="3" fill="#fff3b0" />
+                            <path d="M120 22 C125 30 125 39 120 42 C115 39 115 30 120 22 Z" fill="#ff9f1c" class="animate-pulse" />
+                            <circle cx="120" cy="35" r="3" fill="#fff3b0" />
+                            <path d="M150 26 C155 34 155 43 150 46 C145 43 145 34 150 26 Z" fill="#ff9f1c" class="animate-pulse" />
+                            <circle cx="150" cy="39" r="3" fill="#fff3b0" />
+                        </g>
+
+                        <!-- Smoke Group (Shown when blown out) -->
+                        <g id="candle-smoke" class="opacity-0 transition-opacity duration-700">
+                            <path d="M90 42 Q85 30 92 20" stroke="#9ca3af" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                            <path d="M120 38 Q126 26 118 15" stroke="#9ca3af" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                            <path d="M150 42 Q145 30 152 20" stroke="#9ca3af" stroke-width="2.5" fill="none" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                </div>
+
+                <div id="cake-wish-badge" class="hidden mb-5 p-3 rounded-2xl bg-pink-100/90 border border-pink-300 text-rose-800 font-bold text-sm sm:text-base">
+                    🎉 Wish Granted! May all your dreams come true, Birthday Girl! 💖
+                </div>
+
+                <button onclick="goToPage(5)" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer mt-2">
+                    <span>Continue Birthday Surprise</span>
+                    <span>💖</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 5: CUTE COMPLIMENTS                                  -->
+        <!-- ========================================================= -->
+        <section id="page-5" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-9 w-full">
+                <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    Truth Bombs For Akkii ✨
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-rose-800 mb-6">
+                    Why You Are So Special 🌷
+                </h2>
+
+                <!-- Compliments List (Animated one by one) -->
+                <div id="compliments-list" class="space-y-3 text-left mb-7">
+                    <div class="compliment-item bg-white/80 border border-pink-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3.5 shadow-sm">
+                        <span class="text-2xl flex-shrink-0">😊</span>
+                        <span class="font-semibold text-rose-900 text-base sm:text-lg">Your smile is my favourite.</span>
+                    </div>
+                    <div class="compliment-item bg-white/80 border border-pink-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3.5 shadow-sm">
+                        <span class="text-2xl flex-shrink-0">🌟</span>
+                        <span class="font-semibold text-rose-900 text-base sm:text-lg">You are genuinely special.</span>
+                    </div>
+                    <div class="compliment-item bg-white/80 border border-pink-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3.5 shadow-sm">
+                        <span class="text-2xl flex-shrink-0">🧸</span>
+                        <span class="font-semibold text-rose-900 text-base sm:text-lg">Your cuteness is unlimited.</span>
+                    </div>
+                    <div class="compliment-item bg-white/80 border border-pink-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3.5 shadow-sm">
+                        <span class="text-2xl flex-shrink-0">🌈</span>
+                        <span class="font-semibold text-rose-900 text-base sm:text-lg">You deserve all the happiness.</span>
+                    </div>
+                    <div class="compliment-item bg-white/80 border border-pink-200/80 rounded-2xl p-3.5 sm:p-4 flex items-center gap-3.5 shadow-sm">
+                        <span class="text-2xl flex-shrink-0">💖</span>
+                        <span class="font-semibold text-rose-900 text-base sm:text-lg">Never stop smiling, Akkii.</span>
+                    </div>
+                </div>
+
+                <button onclick="goToPage(6)" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                    <span>See Your Official Award</span>
+                    <span>🏆</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 6: FUNNY CERTIFICATE                                 -->
+        <!-- ========================================================= -->
+        <section id="page-6" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-5 sm:p-8 w-full">
+                <!-- Certificate Card -->
+                <div class="certificate-border rounded-2xl p-5 sm:p-8 relative overflow-hidden mb-6">
+                    <!-- Decorative Ribbon / Seal -->
+                    <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-2 rounded-full bg-gradient-to-tr from-amber-400 to-pink-500 flex items-center justify-center text-white text-2xl sm:text-3xl shadow-md">
+                        👑
+                    </div>
+
+                    <p class="text-xs font-bold tracking-widest text-pink-500 uppercase mb-1">
+                        Ministry of Cutu Affairs
+                    </p>
+                    <h2 class="text-xl sm:text-3xl font-extrabold text-rose-800 tracking-wide mb-3">
+                        OFFICIAL CUTENESS CERTIFICATE
+                    </h2>
+
+                    <p class="text-xs sm:text-sm text-rose-700/80 italic mb-1">This prestigious honour is proudly awarded to</p>
+                    <div class="font-script text-4xl sm:text-5xl text-pink-600 my-2 border-b-2 border-dashed border-pink-300 inline-block px-8 pb-1">
+                        AKKII
+                    </div>
+
+                    <div class="mt-4 text-left max-w-sm mx-auto bg-white/75 rounded-xl p-4 border border-pink-100">
+                        <p class="text-xs font-bold uppercase text-pink-600 mb-2 tracking-wider">Verified Birthday Qualifications:</p>
+                        <ul class="space-y-2 text-sm sm:text-base font-semibold text-rose-900">
+                            <li class="flex items-center gap-2"><span class="text-pink-500">✔</span> 100% Cute Birthday Queen</li>
+                            <li class="flex items-center gap-2"><span class="text-pink-500">✔</span> Unlimited Attitude</li>
+                            <li class="flex items-center gap-2"><span class="text-pink-500">✔</span> Professional Smile Stealer</li>
+                            <li class="flex items-center gap-2"><span class="text-pink-500">✔</span> Certified Cutu</li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-5 flex items-center justify-between text-xs text-rose-700/75 font-semibold px-2">
+                        <span>Valid: Forever & Always</span>
+                        <span>Signed: Your Cutu ❤️</span>
+                    </div>
+                </div>
+
+                <!-- Accept Button -->
+                <div id="cert-action-area">
+                    <button onclick="acceptCertificate()" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                        <span>Accept My Certificate 🏆</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 7: MEMORIES & FEELINGS                               -->
+        <!-- ========================================================= -->
+        <section id="page-7" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-9 w-full">
+                <h2 class="text-2xl sm:text-4xl font-bold text-rose-800 mb-2">
+                    Our Little World & Memories 📸
+                </h2>
+                <p class="text-sm sm:text-base text-rose-700/85 mb-6">
+                    Every moment with you turns into my favourite story, Akkii. 💖
+                </p>
+
+                <!-- 3 Photo Frames: Simply place photo1.jpg, photo2.jpg, photo3.jpg in your GitHub folder! -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <!-- Frame 1 -->
+                    <div class="bg-white p-3 rounded-2xl shadow-md border border-pink-100 hover:-translate-y-1.5 transition-all">
+                        <div class="aspect-square rounded-xl bg-gradient-to-br from-pink-100 via-rose-50 to-purple-100 flex flex-col items-center justify-center overflow-hidden relative border-2 border-pink-200">
+                            <!-- Replace 'photo1.jpg' with your actual image filename or link -->
+                            <img src="photo1.jpg" alt="Akkii Cute Smile" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div style="display: none;" class="w-full h-full flex-col items-center justify-center p-3 text-center">
+                                <span class="text-3xl block mb-1">🌸</span>
+                                <span class="text-xs font-bold text-pink-600 block">Your Cute Smile</span>
+                            </div>
+                        </div>
+                        <p class="mt-2.5 text-xs sm:text-sm font-bold text-rose-800">My Favourite View 💕</p>
+                    </div>
+
+                    <!-- Frame 2 -->
+                    <div class="bg-white p-3 rounded-2xl shadow-md border border-pink-100 hover:-translate-y-1.5 transition-all">
+                        <div class="aspect-square rounded-xl bg-gradient-to-br from-purple-100 via-pink-50 to-rose-100 flex flex-col items-center justify-center overflow-hidden relative border-2 border-pink-200">
+                            <!-- Replace 'photo2.jpg' with your actual image filename or link -->
+                            <img src="photo2.jpg" alt="Us & Laughs" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div style="display: none;" class="w-full h-full flex-col items-center justify-center p-3 text-center">
+                                <span class="text-3xl block mb-1">✨</span>
+                                <span class="text-xs font-bold text-pink-600 block">Us & Laughs</span>
+                            </div>
+                        </div>
+                        <p class="mt-2.5 text-xs sm:text-sm font-bold text-rose-800">Pure Happiness 🥹</p>
+                    </div>
+
+                    <!-- Frame 3 -->
+                    <div class="bg-white p-3 rounded-2xl shadow-md border border-pink-100 hover:-translate-y-1.5 transition-all">
+                        <div class="aspect-square rounded-xl bg-gradient-to-br from-rose-100 via-amber-50 to-pink-100 flex flex-col items-center justify-center overflow-hidden relative border-2 border-pink-200">
+                            <!-- Replace 'photo3.jpg' with your actual image filename or link -->
+                            <img src="photo3.jpg" alt="Future Memories" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div style="display: none;" class="w-full h-full flex-col items-center justify-center p-3 text-center">
+                                <span class="text-3xl block mb-1">🦋</span>
+                                <span class="text-xs font-bold text-pink-600 block">Future Memories</span>
+                            </div>
+                        </div>
+                        <p class="mt-2.5 text-xs sm:text-sm font-bold text-rose-800">Forever To Go ❤️‍🔥</p>
+                    </div>
+                </div>
+
+                <div class="bg-white/75 rounded-2xl p-4 border border-pink-200 mb-6">
+                    <p class="text-sm sm:text-base font-medium text-rose-900 italic">
+                        "Chahe hum baat kar rahe hon ya bas chupchap saath hon, tumhare saath har pal special lagta hai, Akkii."
+                    </p>
+                </div>
+
+                <button onclick="goToPage(8)" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                    <span>Read My Heart's Letter</span>
+                    <span>💌</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 8: PERSONAL LOVE LETTER                              -->
+        <!-- ========================================================= -->
+        <section id="page-8" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 w-full text-left">
+                <div class="text-center mb-5">
+                    <span class="text-4xl inline-block animate-float">💌</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold text-rose-800 mt-1">
+                        A Little Something From My Heart 💌
+                    </h2>
+                </div>
+
+                <!-- Paper Letter Styling -->
+                <div class="bg-white/90 rounded-2xl p-5 sm:p-7 border border-pink-200 shadow-inner max-h-[52vh] overflow-y-auto custom-scroll space-y-4 text-rose-950 text-base sm:text-lg leading-relaxed font-medium">
+                    <p class="font-bold text-pink-600 text-xl">Happy Birthday Dear Akkii, 🎂</p>
+                    
+                    <p>
+                        I may not have the perfect words for everything, but today on your birthday, I want you to know that you are genuinely special.
+                    </p>
+                    
+                    <p>
+                        I hope your days are always filled with happiness, your dreams come true, and your beautiful smile never fades.
+                    </p>
+                    
+                    <p>
+                        Even when things aren't perfect, I hope we keep understanding each other, laughing together and making beautiful memories.
+                    </p>
+                    
+                    <p class="bg-pink-50/90 p-3 rounded-xl border-l-4 border-pink-400 text-rose-900">
+                        And yes, irritating you is a lifetime subscription — especially on your birthday! No cancellation allowed! 😂❤️
+                    </p>
+                    
+                    <p>
+                        Stay happy, stay blessed and always stay this cute.
+                    </p>
+                    
+                    <p class="font-bold text-pink-600 pt-2 text-right">
+                        Happy Birthday once again, with lots of love ❤️<br>
+                        <span class="text-sm font-semibold text-rose-700">— Your Cutu</span>
+                    </p>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button onclick="goToPage(9)" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                        <span>One Warm Surprise Next</span>
+                        <span>🫂</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 9: VIRTUAL HUG                                       -->
+        <!-- ========================================================= -->
+        <section id="page-9" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-7 sm:p-11 w-full relative overflow-hidden">
+                <!-- Cute Animated Teddy & Heart SVG -->
+                <div id="hug-visual" class="w-36 h-36 sm:w-44 sm:h-44 mx-auto mb-5 relative flex items-center justify-center transition-transform duration-500">
+                    <div class="absolute inset-0 bg-pink-300/40 rounded-full blur-xl animate-pulse"></div>
+                    <!-- Custom Cute Teddy Bear Holding a Heart SVG -->
+                    <svg viewBox="0 0 200 200" class="w-full h-full relative z-10 drop-shadow-md animate-float">
+                        <!-- Ears -->
+                        <circle cx="55" cy="55" r="24" fill="#c68652" />
+                        <circle cx="55" cy="55" r="13" fill="#f3c6a5" />
+                        <circle cx="145" cy="55" r="24" fill="#c68652" />
+                        <circle cx="145" cy="55" r="13" fill="#f3c6a5" />
+                        <!-- Body -->
+                        <ellipse cx="100" cy="145" rx="48" ry="42" fill="#d49562" />
+                        <!-- Head -->
+                        <circle cx="100" cy="85" r="45" fill="#d49562" />
+                        <!-- Snout -->
+                        <ellipse cx="100" cy="96" rx="18" ry="14" fill="#fae0cc" />
+                        <ellipse cx="100" cy="91" rx="7" ry="5" fill="#4a152b" />
+                        <!-- Smile -->
+                        <path d="M 92 100 Q 100 108 108 100" stroke="#4a152b" stroke-width="3" fill="none" stroke-linecap="round" />
+                        <!-- Eyes -->
+                        <circle cx="83" cy="78" r="5" fill="#2d0c19" />
+                        <circle cx="81.5" cy="76.5" r="1.8" fill="#ffffff" />
+                        <circle cx="117" cy="78" r="5" fill="#2d0c19" />
+                        <circle cx="115.5" cy="76.5" r="1.8" fill="#ffffff" />
+                        <!-- Rosy Cheeks -->
+                        <ellipse cx="72" cy="90" rx="7" ry="4" fill="#ff7eb3" opacity="0.65" />
+                        <ellipse cx="128" cy="90" rx="7" ry="4" fill="#ff7eb3" opacity="0.65" />
+                        <!-- Big Heart Held in Center -->
+                        <path d="M100 165 C100 165 65 142 65 122 C65 110 75 103 85 103 C93 103 98 108 100 113 C102 108 107 103 115 103 C125 103 135 110 135 122 C135 142 100 165 100 165 Z" fill="#ff4d8d" />
+                        <!-- Cute Paws Hugging Heart -->
+                        <ellipse cx="66" cy="134" rx="14" ry="11" transform="rotate(-20 66 134)" fill="#c68652" />
+                        <ellipse cx="134" cy="134" rx="14" ry="11" transform="rotate(20 134 134)" fill="#c68652" />
+                    </svg>
+                </div>
+
+                <h2 class="text-2xl sm:text-4xl font-bold text-rose-800 mb-3">
+                    Sending you the biggest virtual hug! 🫂
+                </h2>
+                <p class="text-sm sm:text-base text-rose-700/85 mb-7 max-w-md mx-auto">
+                    Jab bhi thodi si bhi sad ya tired feel ho, yeh wala hug yaad kar lena!
+                </p>
+
+                <button id="accept-hug-btn" onclick="triggerVirtualHug()" class="btn-glow text-white font-bold text-lg px-9 py-4 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                    <span>Accept Hug</span>
+                    <span>🤗❤️</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- PAGE 10: FINAL SURPRISE                                   -->
+        <!-- ========================================================= -->
+        <section id="page-10" class="page-section w-full flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 w-full relative overflow-hidden border-2 border-pink-300 shadow-[0_0_50px_rgba(255,77,141,0.35)]">
+                <!-- Glowing Aura -->
+                <div class="absolute -top-20 -left-20 w-56 h-56 bg-pink-400/25 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-20 -right-20 w-56 h-56 bg-purple-400/25 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-5xl sm:text-6xl mb-4 animate-heartbeat inline-block">
+                    💖✨👑
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-rose-500 to-purple-600 mb-4 leading-tight">
+                    HAPPY BIRTHDAY, AKKII! 🎂❤️
+                </h1>
+
+                <p class="text-lg sm:text-2xl text-rose-900 font-semibold mb-8 max-w-md mx-auto leading-relaxed">
+                    You are truly special, Cutu. Keep smiling today and always — you deserve every beautiful thing in this world!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="burstHearts(45)" class="btn-glow text-white font-bold text-base sm:text-lg px-7 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                        <span>Send More Love</span>
+                        <span>💕</span>
+                    </button>
+
+                    <button onclick="replaySurprise()" class="btn-soft font-bold text-base sm:text-lg px-7 py-3.5 rounded-full inline-flex items-center gap-2 cursor-pointer">
+                        <span>Replay Surprise</span>
+                        <span>🔄</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Romantic Modal Popup (Used for Hug & Certificate confirmation - No alert()) -->
+    <div id="romantic-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-rose-950/40 backdrop-blur-sm transition-opacity">
+        <div class="glass-card bg-white/95 rounded-3xl p-7 sm:p-9 max-w-md w-full text-center shadow-2xl transform scale-95 transition-transform duration-300" id="romantic-modal-box">
+            <div id="modal-emoji" class="text-5xl mb-3 animate-bounce">🫂💖</div>
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold text-rose-800 mb-2">Hug Received!</h3>
+            <p id="modal-message" class="text-base sm:text-lg text-rose-900/90 font-medium mb-6 leading-relaxed">
+                Cutu ne tumhe tightly hug kar liya hai! Ab smile karo jaldi se! 🥹❤️
+            </p>
+            <button id="modal-action-btn" onclick="closeModalAndAdvance()" class="btn-glow text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-full w-full cursor-pointer">
+                Aww, Thank You Cutu! ❤️
+            </button>
+        </div>
+    </div>
+
+    <!-- Subtle Footer -->
+    <footer class="relative z-20 text-center pb-4 pt-1 px-4 text-xs font-semibold text-rose-800/60">
+        Made with endless smiles & warmth just for Akkii 💗
+    </footer>
+
+    <script>
+        /* =====================================================================
+           STATE & NAVIGATION MANAGEMENT
+           ===================================================================== */
+        let currentPage = 1;
+        const totalPages = 10;
+        let noClickCount = 0;
+        let modalNextPage = null;
+
+        const noFunnyMessages = [
+            "Arre?! Galat button dab gaya kya? Phir se socho! 🤨",
+            "Cutu rone lagega! YES pe click karo chupchap! 😭❤️",
+            "Yeh NO button sirf decoration ke liye hai, kaam nahi karta! 😜",
+            "Itna bhaav mat khao Akkii, mujhe pata hai tumhe pyaar hai! 😏💖",
+            "Error 404: 'NO' option not available for Cutu! 😂✨",
+            "Pakad ke dikhao! Seedha YES dabao ab! 🥰"
+        ];
+
+        // Update progress bar & page transitions
+        function goToPage(pageNum) {
+            if (pageNum < 1 || pageNum > totalPages) return;
+
+            const currentEl = document.getElementById(`page-${currentPage}`);
+            const nextEl = document.getElementById(`page-${pageNum}`);
+
+            // Fade out current page
+            currentEl.classList.remove('visible');
+
+            setTimeout(() => {
+                currentEl.classList.remove('active');
+                currentPage = pageNum;
+
+                // Update Progress UI
+                document.getElementById('page-indicator-text').textContent = `Page ${currentPage} of ${totalPages}`;
+                document.getElementById('progress-bar').style.width = `${(currentPage / totalPages) * 100}%`;
+
+                // Show next page
+                nextEl.classList.add('active');
+                // Trigger reflow for smooth CSS transition
+                void nextEl.offsetWidth;
+                nextEl.classList.add('visible');
+
+                // Page-specific entrance animations
+                onPageEnter(pageNum);
+            }, 320);
+        }
+
+        function onPageEnter(pageNum) {
+            if (pageNum === 4) {
+                burstHearts(50);
+            } else if (pageNum === 5) {
+                animateCompliments();
+            } else if (pageNum === 10) {
+                burstHearts(60);
+            }
+        }
+
+        // Page 1 -> Page 2 + Gentle Music Start if user wants
+        function startSurprise() {
+            createSparklesAtCenter();
+            if (!isMusicPlaying) {
+                toggleMusic(true);
+            }
+            goToPage(2);
+        }
+
+        /* =====================================================================
+           PAGE 2: ARE YOU READY INTERACTION
+           ===================================================================== */
+        function handleReadyChoice(choice) {
+            const responseBox = document.getElementById('page2-response');
+            const nextWrap = document.getElementById('page2-next-wrap');
+
+            responseBox.classList.remove('hidden');
+            nextWrap.classList.remove('hidden');
+
+            if (choice === 'yes') {
+                responseBox.innerHTML = "Yayy! That’s the spirit, Akkii! Cutu ki excitement level 1000% ho gayi hai! 🥳💗";
+                burstHearts(20);
+            } else {
+                responseBox.innerHTML = "Secret hai madam! Har cheez pehle bata di toh surprise kaisa? Chalo ab chupchap aage dekho! 😜🤫";
+            }
+        }
+
+        /* =====================================================================
+           PAGE 3: PLAYFUL "DO YOU LOVE YOUR CUTU?" DODGING NO BUTTON
+           ===================================================================== */
+        function dodgeNoButton() {
+            const noBtn = document.getElementById('no-love-btn');
+            const yesBtn = document.getElementById('yes-love-btn');
+            const arena = document.getElementById('playful-arena');
+            const msgEl = document.getElementById('no-attempt-msg');
+
+            // Update funny message
+            msgEl.textContent = noFunnyMessages[noClickCount % noFunnyMessages.length];
+            msgEl.classList.add('scale-105');
+            setTimeout(() => msgEl.classList.remove('scale-105'), 200);
+
+            noClickCount++;
+
+            // Grow YES button slightly each time NO is attempted
+            const newScale = Math.min(1 + noClickCount * 0.08, 1.45);
+            yesBtn.style.transform = `scale(${newScale})`;
+
+            // Move NO button randomly within the arena bounds
+            const arenaRect = arena.getBoundingClientRect();
+            const btnWidth = noBtn.offsetWidth || 100;
+            const btnHeight = noBtn.offsetHeight || 44;
+
+            const maxX = Math.max(20, arenaRect.width - btnWidth - 16);
+            const maxY = Math.max(20, arenaRect.height - btnHeight - 16);
+
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+        }
+
+        function handleYesLove() {
+            burstHearts(55);
+            goToPage(4);
+        }
+
+        /* =====================================================================
+           PAGE 4: INTERACTIVE BIRTHDAY CAKE CANDLES
+           ===================================================================== */
+        let candlesBlown = false;
+        function blowCandles() {
+            if (candlesBlown) {
+                burstHearts(30);
+                return;
+            }
+            candlesBlown = true;
+            document.getElementById('candle-flames').style.opacity = '0';
+            document.getElementById('candle-smoke').style.opacity = '1';
+            document.getElementById('cake-instruction').textContent = "Woohoo! Candles blown! 🥳✨";
+            document.getElementById('cake-wish-badge').classList.remove('hidden');
+            burstHearts(65);
+        }
+
+        /* =====================================================================
+           PAGE 5: STAGGERED COMPLIMENTS ANIMATION
+           ===================================================================== */
+        function animateCompliments() {
+            const items = document.querySelectorAll('#compliments-list .compliment-item');
+            items.forEach((item) => item.classList.remove('show'));
+
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('show');
+                }, 220 * (index + 1));
+            });
+        }
+
+        /* =====================================================================
+           PAGE 6: ACCEPT CERTIFICATE
+           ===================================================================== */
+        function acceptCertificate() {
+            burstHearts(40);
+            openModal(
+                "🏆💖",
+                "Certificate Accepted!",
+                "Mubarak ho Akkii! Ab officially tum duniya ki sabse cute insaan declare ho chuki ho! 😍✨",
+                "Next Surprise ➡️",
+                7
+            );
+        }
+
+        /* =====================================================================
+           PAGE 9: VIRTUAL HUG
+           ===================================================================== */
+        function triggerVirtualHug() {
+            const visual = document.getElementById('hug-visual');
+            visual.classList.add('scale-125');
+            setTimeout(() => visual.classList.remove('scale-125'), 600);
+
+            burstHearts(55);
+            openModal(
+                "🫂💞",
+                "Biggest Virtual Hug Delivered!",
+                "Cutu ne tumhe ek tight, warm aur pyaara sa hug bheja hai! Feel hua na? Hamesha khush rehna Akkii! 🥹❤️",
+                "See Final Surprise ✨",
+                10
+            );
+        }
+
+        /* =====================================================================
+           CUSTOM ROMANTIC MODAL HELPERS
+           ===================================================================== */
+        function openModal(emoji, title, message, btnText, nextPage) {
+            const modal = document.getElementById('romantic-modal');
+            const box = document.getElementById('romantic-modal-box');
+
+            document.getElementById('modal-emoji').textContent = emoji;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            document.getElementById('modal-action-btn').textContent = btnText;
+            modalNextPage = nextPage;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                box.classList.remove('scale-95');
+                box.classList.add('scale-100');
+            }, 20);
+        }
+
+        function closeModalAndAdvance() {
+            const modal = document.getElementById('romantic-modal');
+            const box = document.getElementById('romantic-modal-box');
+
+            box.classList.remove('scale-100');
+            box.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                if (modalNextPage) {
+                    goToPage(modalNextPage);
+                    modalNextPage = null;
+                }
+            }, 200);
+        }
+
+        /* =====================================================================
+           PAGE 10: REPLAY SURPRISE
+           ===================================================================== */
+        function replaySurprise() {
+            // Reset Page 2 & Page 3 states
+            document.getElementById('page2-response').classList.add('hidden');
+            document.getElementById('page2-next-wrap').classList.add('hidden');
+
+            noClickCount = 0;
+            const noBtn = document.getElementById('no-love-btn');
+            const yesBtn = document.getElementById('yes-love-btn');
+            noBtn.style.position = 'static';
+            yesBtn.style.transform = 'scale(1)';
+            document.getElementById('no-attempt-msg').textContent = "Sach sach batana, Cutu dekh raha hai! 👀";
+
+            // Reset Birthday Cake candles
+            candlesBlown = false;
+            document.getElementById('candle-flames').style.opacity = '1';
+            document.getElementById('candle-smoke').style.opacity = '0';
+            document.getElementById('cake-instruction').textContent = "Pehle wish maango aur cake pe tap karke candles blow karo! 🕯️✨";
+            document.getElementById('cake-wish-badge').classList.add('hidden');
+
+            goToPage(1);
+        }
+
+        /* =====================================================================
+           BACKGROUND FLOATING HEARTS & SPARKLES
+           ===================================================================== */
+        function spawnFloatingHeart() {
+            const container = document.getElementById('floating-hearts-bg');
+            const heart = document.createElement('div');
+            const emojis = ['💗', '💖', '💕', '🌸', '✨', '💓'];
+            heart.className = 'floating-heart';
+            heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+            const size = Math.random() * 18 + 14; // 14px to 32px
+            const left = Math.random() * 100;
+            const duration = Math.random() * 7 + 7; // 7s to 14s
+
+            heart.style.left = `${left}vw`;
+            heart.style.fontSize = `${size}px`;
+            heart.style.animationDuration = `${duration}s`;
+
+            container.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(spawnFloatingHeart, 750);
+
+        // Sparkle trail on tap/click
+        document.addEventListener('click', (e) => {
+            createSparkle(e.clientX, e.clientY);
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle text-lg';
+            sparkle.textContent = ['✨', '💖', '🌸'][Math.floor(Math.random() * 3)];
+            sparkle.style.left = `${x - 10}px`;
+            sparkle.style.top = `${y - 10}px`;
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 950);
+        }
+
+        function createSparklesAtCenter() {
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    createSparkle(
+                        cx + (Math.random() - 0.5) * 180,
+                        cy + (Math.random() - 0.5) * 180
+                    );
+                }, i * 60);
+            }
+        }
+
+        /* =====================================================================
+           CANVAS HEART CONFETTI & EXPLOSION ENGINE
+           ===================================================================== */
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationFrameId = null;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function burstHearts(count = 40) {
+            const colors = ['#ff4d8d', '#ff7eb3', '#ff1e6e', '#c77dff', '#ffb3c6', '#ffd166'];
+            const originX = canvas.width / 2;
+            const originY = canvas.height * 0.45;
+
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 9 + 4;
+                particles.push({
+                    x: originX,
+                    y: originY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 3,
+                    size: Math.random() * 12 + 10,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    alpha: 1,
+                    rotation: Math.random() * 360,
+                    rotationSpeed: (Math.random() - 0.5) * 8,
+                    gravity: 0.22
+                });
+            }
+
+            if (!animationFrameId) {
+                animateConfetti();
+            }
+        }
+
+        function drawHeartShape(x, y, size, color, alpha, rotation) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate((rotation * Math.PI) / 180);
+            ctx.globalAlpha = alpha;
+            ctx.fillStyle = color;
+
+            const topCurveHeight = size * 0.3;
+            ctx.beginPath();
+            ctx.moveTo(0, topCurveHeight);
+            ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+            ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
+            ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+            ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += p.gravity;
+                p.vx *= 0.98;
+                p.rotation += p.rotationSpeed;
+                p.alpha -= 0.012;
+
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                } else {
+                    drawHeartShape(p.x, p.y, p.size, p.color, p.alpha, p.rotation);
+                }
+            }
+
+            if (particles.length > 0) {
+                animationFrameId = requestAnimationFrame(animateConfetti);
+            } else {
+                animationFrameId = null;
+            }
+        }
+
+        /* =====================================================================
+           CUSTOM ELEVENLABS AUDIO PLAYER ('birthday.mp3')
+           ===================================================================== */
+        let isMusicPlaying = false;
+
+        function toggleMusic(forceOn = false) {
+            const audio = document.getElementById('bg-music');
+            const icon = document.getElementById('music-icon');
+            const label = document.getElementById('music-label');
+
+            if (forceOn && isMusicPlaying) return;
+
+            if (!isMusicPlaying) {
+                audio.volume = 1.0; // Full volume for mobile speakers
+                audio.play().then(() => {
+                    isMusicPlaying = true;
+                    icon.textContent = '🎵';
+                    label.textContent = 'Music: ON';
+                }).catch((err) => {
+                    console.log('Audio play waiting for interaction or missing birthday.mp3:', err);
+                });
+            } else {
+                audio.pause();
+                isMusicPlaying = false;
+                icon.textContent = '🔇';
+                label.textContent = 'Music: OFF';
+            }
+        }
+    </script>
+</body>
+</html>
